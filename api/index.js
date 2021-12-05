@@ -3,8 +3,8 @@ require('dotenv').config();
 require('./database');
 
 async function init() {
-    await app.listen(process.env.PORT || 3001);
-    console.log(`App running on port ${process.env.PORT}`);
+    await app.listen(process.env.PORT || 3100);
+    console.log('App running on port: ' , process.env.PORT || 3001);
 }
 
-init(); 
+init();

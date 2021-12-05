@@ -1,7 +1,7 @@
 # E08
 ## Mern Stack (Battery Reciclyng)
 
-API - Version 1
+API - Version 2
 
 Models:
 
@@ -11,3 +11,4 @@ Routes:
 
 * /singin
 * /singup
+* /verify
