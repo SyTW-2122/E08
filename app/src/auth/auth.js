@@ -34,10 +34,7 @@ class Auth extends Component {
               }
               id="login"
               onClick={this.onHandleNavClick}
-            >
-              Login
-            </div>
-
+            >Login</div>
             <div
               className={
                 this.state.actualTap === "register"
@@ -46,11 +43,8 @@ class Auth extends Component {
               }
               id="register"
               onClick={this.onHandleNavClick}
-            >
-              Register
-            </div>
+            >Register</div>
           </div>
-
           <div className="containerForm">
             {this.state.actualTap === "login" && <Login />}
             {this.state.actualTap === "register" && <Register />}

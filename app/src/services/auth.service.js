@@ -1,38 +1,37 @@
+const API_URI = "http://localhost:3100";
 
 export const authService = {
-    login,
-    verifyToken,
-    logout
-}
+  login,
+  verifyToken,
+  logout,
+};
 
 async function login(user) {
+  const configuration = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user),
+  };
 
-    const configuration = {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(user)
-    }
+  const request = await fetch(API_URI + "/singin", configuration);
+  const requestJson = await request.json();
 
-    const request = await fetch('http://localhost:3100/singin', configuration);
-    const requestJson = await request.json();
-
-    return requestJson;
-
+  return requestJson;
 }
 
 async function verifyToken(token) {
-    const configuration = {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify({token: token})
-    }
+  const configuration = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token: token }),
+  };
 
-    const verifyToken = await fetch('http://localhost:3100/verify' , configuration);
-    const verifyToJSON = await verifyToken.json();
-    return verifyToJSON;
+  const verifyToken = await fetch(API_URI + "/verify", configuration);
+  const verifyToJSON = await verifyToken.json();
+  return verifyToJSON;
 }
 
 function logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('user');
+  // remove user from local storage to log user out
+  localStorage.removeItem("user");
 }

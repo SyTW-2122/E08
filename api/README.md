@@ -9,6 +9,7 @@ Models:
 
 Routes:
 
-* /singin
-* /singup
-* /verify
+- auth.route:
+    - /singin
+    - /singup
+    - /verify

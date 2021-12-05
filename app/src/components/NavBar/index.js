@@ -1,7 +1,6 @@
 import React from "react";
 import "../../auth/auth.css";
 
-
 import {
   Nav,
   NavLogo,
@@ -10,7 +9,7 @@ import {
   NavMenu,
   NavBtn,
   NavBtnLink,
-} from "./NavbarElements";
+} from "./NavbarStyles";
 
 const Navbar = () => {
   return (

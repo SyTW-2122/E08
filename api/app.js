@@ -13,7 +13,6 @@ app.use(cors());
 app.use(helmet());
 
 // Routes
-app.use(require('./routes/auth.todo'));
-app.use('/todo' , require('./routes/todo.route'));
+app.use(require('./routes/auth.route'));
 
 module.exports = app;
