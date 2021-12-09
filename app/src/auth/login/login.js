@@ -9,6 +9,7 @@ class Login extends Component {
     this.state = {
       alertUsername: false,
       alertPassword: false,
+      alertResponse: false,
     };
   }
 
@@ -49,9 +50,12 @@ class Login extends Component {
           username: this.username.value,
           password: this.password.value,
         };
-
         this.props.login(userObjet);
       }
+
+    this.setState({
+      alertResponse: true,
+    });
   };
 
   render() {
@@ -85,9 +89,9 @@ class Login extends Component {
           <button className="button-send">Login</button>
         </form>
 
-        {authReducer.loginRequest && (
+        {authReducer.responseApi && this.state.alertResponse && (
           <div>
-            <span>Username or password incorrect</span>
+            <span>{authReducer.response.message}</span>
           </div>
         )}
       </div>

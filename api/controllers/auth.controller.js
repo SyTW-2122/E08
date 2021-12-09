@@ -7,6 +7,14 @@ require("dotenv").config();
 authMethods.singup = async (req, res) => {
   const { username, password } = req.body;
 
+  const user = await UserModel.findOne({ username: username });
+  if (user) {
+    return res.json({
+      auth: false,
+      message: "Username already exists",
+    });
+  }
+
   const newUser = new UserModel({
     username,
     password,
@@ -15,9 +23,18 @@ authMethods.singup = async (req, res) => {
 
   newUser.save();
 
+  const token = jwt.sign(newUser._id.toString(), process.env.SECURE_KEY);
+  if (!token) {
+    return res.json({
+      auth: false,
+      message: "There was a problem with the token, please try again.",
+    });
+  }
+
   return res.json({
-    status: true,
+    auth: true,
     message: "User registered succesfully",
+    token: token,
   });
 };
 
@@ -28,7 +45,7 @@ authMethods.singin = async (req, res) => {
   if (!user) {
     return res.json({
       auth: false,
-      message: "Username or password incorrect",
+      message: "Username incorrect",
     });
   }
 
@@ -36,7 +53,7 @@ authMethods.singin = async (req, res) => {
   if (!autenticate) {
     return res.json({
       auth: false,
-      message: "Username or password incorrect",
+      message: "Password incorrect",
     });
   }
 
@@ -44,12 +61,13 @@ authMethods.singin = async (req, res) => {
   if (!token) {
     return res.json({
       auth: false,
-      message: "There was a problem, try it again",
+      message: "There was a problem with the token, please try again.",
     });
   }
 
   return res.json({
     auth: true,
+    message: "User login succesfully",
     token: token,
   });
 };

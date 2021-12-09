@@ -2,6 +2,7 @@ const API_URI = "http://localhost:3100";
 
 export const authService = {
   login,
+  register,
   verifyToken,
   logout,
 };
@@ -14,6 +15,19 @@ async function login(user) {
   };
 
   const request = await fetch(API_URI + "/singin", configuration);
+  const requestJson = await request.json();
+
+  return requestJson;
+}
+
+async function register(user) {
+  const configuration = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user),
+  };
+
+  const request = await fetch(API_URI + "/singup", configuration);
   const requestJson = await request.json();
 
   return requestJson;
