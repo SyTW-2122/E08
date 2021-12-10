@@ -11,28 +11,22 @@ import { Auth } from "./auth";
 import "./app.css";
 import { authActions } from "./_action";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+function App(props) {
+  const { authReducer } = props;
 
-    const user = localStorage.getItem("user");
-    if (user) {
-      this.props.confirmLogin(user);
-    }
+  const user = localStorage.getItem("user");
+  if (user) {
+    props.confirmLogin(user);
   }
 
-  render() {
-    const { authReducer } = this.props;
-
-    return (
-      <Router history={history}>
-        <Navbar />
-        <Route path="/auth" component={Auth} />
-        <PrivateRoute exat path="/" component={Home} auth={authReducer.auth} />
-        <Footer />
-      </Router>
-    );
-  }
+  return (
+    <Router history={history}>
+      <Navbar />
+      <Route path="/auth" component={Auth} />
+      <PrivateRoute exat path="/" component={Home} auth={authReducer.auth} />
+      <Footer />
+    </Router>
+  );
 }
 
 function mapStateToProps(state) {

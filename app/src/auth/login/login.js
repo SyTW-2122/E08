@@ -1,102 +1,93 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { authActions } from "../../_action";
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
+function Login(props) {
+  const { authReducer } = props;
 
-    this.state = {
-      alertUsername: false,
-      alertPassword: false,
-      alertResponse: false,
-    };
-  }
+  const [Username, setUsername] = useState("");
+  const [Password, setPassword] = useState("");
 
-  authUsername(username) {
+  const [alertUsername, setalertUsername] = useState(false);
+  const [alertPassword, setalertPassword] = useState(false);
+  const [alertResponse, setalertResponse] = useState(false);
+
+  const authUsername = (username) => {
     if (username === "") {
-      this.setState({
-        alertUsername: true,
-      });
+      setalertUsername(true);
       return false;
     } else {
-      this.setState({
-        alertUsername: false,
-      });
+      setalertUsername(false);
       return true;
     }
-  }
-
-  authPassword(password) {
-    if (password === "") {
-      this.setState({
-        alertPassword: true,
-      });
-      return false;
-    } else {
-      this.setState({
-        alertPassword: false,
-      });
-      return true;
-    }
-  }
-
-  onHandleSubmit = (e) => {
-    e.preventDefault();
-
-    if (this.authUsername(this.username.value))
-      if (this.authPassword(this.password.value)) {
-        const userObjet = {
-          username: this.username.value,
-          password: this.password.value,
-        };
-        this.props.login(userObjet);
-      }
-
-    this.setState({
-      alertResponse: true,
-    });
   };
 
-  render() {
-    const { authReducer } = this.props;
+  const authPassword = (password) => {
+    if (password === "") {
+      setalertPassword(true);
+      return false;
+    } else {
+      setalertPassword(false);
+      return true;
+    }
+  };
 
-    return (
-      <div className="formSend">
-        <form action="#" onSubmit={this.onHandleSubmit}>
-          <div className="form-group">
-            <input
-              type="text"
-              id="usermane"
-              ref={(input) => (this.username = input)}
-              name="usermane"
-              className="form-control"
-              placeholder="Username"
-            />
-            {this.state.alertUsername && <p>The username is required</p>}
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              ref={(input) => (this.password = input)}
-              className="form-control"
-              placeholder="Password"
-            />
-            {this.state.alertPassword && <p>The password is required</p>}
-          </div>
-          <button className="button-send">Login</button>
-        </form>
+  const onHandleSubmit = (e) => {
+    e.preventDefault();
 
-        {authReducer.responseApi && this.state.alertResponse && (
-          <div>
-            <span>{authReducer.response.message}</span>
-          </div>
-        )}
-      </div>
-    );
-  }
+    if (authUsername(Username))
+      if (authPassword(Password)) {
+        const userObjet = {
+          username: Username,
+          password: Password,
+        };
+        props.login(userObjet);
+      }
+
+    setalertResponse(true);
+  };
+
+  return (
+    <div className="formSend">
+      <form action="#" onSubmit={onHandleSubmit}>
+        <div className="form-group">
+          <input
+            type="text"
+            id="usermane"
+            name="usermane"
+            className="form-control"
+            placeholder="Username"
+            value={Username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+          {alertUsername && <p>The username is required</p>}
+        </div>
+        <div className="form-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className="form-control"
+            placeholder="Password"
+            value={Password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+          {alertPassword && <p>The password is required</p>}
+        </div>
+        <button className="button-send">Login</button>
+      </form>
+
+      {authReducer.responseApi && alertResponse && (
+        <div>
+          <span>{authReducer.response.message}</span>
+        </div>
+      )}
+    </div>
+  );
 }
 
 function mapStateToProps(state) {
