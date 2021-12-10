@@ -1,21 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { Link } from "react-router-dom";
 
-class Home extends Component {
-  render() {
-    return (
-      <div className="container">
-        <div>
-          <h1>Welcome</h1>
-          <p>
-            <Link to="/auth">Logout</Link>
-          </p>
-        </div>
+export function Home() {
+  return (
+    <div className="container">
+      <div>
+        <h1>Welcome</h1>
+        <p>
+          <Link to="/auth">Logout</Link>
+        </p>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-const homeComponent = connect()(Home);
-export { homeComponent as Home };

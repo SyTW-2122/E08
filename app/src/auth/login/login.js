@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../_action";
 
-function Login(props) {
-  const { authReducer } = props;
+export function Login() {
+
+  const dispatch = useDispatch();
+  const responseApi = useSelector(state => state.authReducer.responseApi);
+  const message = useSelector(state => state.authReducer.response.message);
+
 
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
@@ -41,7 +45,7 @@ function Login(props) {
           username: Username,
           password: Password,
         };
-        props.login(userObjet);
+        dispatch(authActions.login(userObjet));
       }
 
     setalertResponse(true);
@@ -81,23 +85,11 @@ function Login(props) {
         <button className="button-send">Login</button>
       </form>
 
-      {authReducer.responseApi && alertResponse && (
+      {responseApi && alertResponse && (
         <div>
-          <span>{authReducer.response.message}</span>
+          <span>{message}</span>
         </div>
       )}
     </div>
   );
 }
-
-function mapStateToProps(state) {
-  const { authReducer } = state;
-  return { authReducer };
-}
-
-const actionCreator = {
-  login: authActions.login,
-};
-
-const loginComponent = connect(mapStateToProps, actionCreator)(Login);
-export { loginComponent as Login };

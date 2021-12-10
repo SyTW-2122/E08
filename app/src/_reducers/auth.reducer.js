@@ -1,6 +1,14 @@
 import { userConstants } from "../_constants";
 
-export function authReducer(state = {}, action) {
+const initialState = {
+  response: {
+    auth: false,
+    message: '',
+    token: null,
+  } 
+}
+
+export function authReducer(state = initialState, action) {
   switch (action.type) {
     case userConstants.USERLOGINSUCCESS:
       return {
@@ -18,9 +26,11 @@ export function authReducer(state = {}, action) {
       return {
         ...state,
         responseApi: true,
-        response: action.payload
+        response: action.payload,
       };
     default:
-      return state;
+      return {
+        ...state,
+      };
   }
 }

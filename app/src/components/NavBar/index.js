@@ -3,12 +3,6 @@ import "../../auth/auth.css";
 
 import {
   Nav,
-  NavLogo,
-  NavLink,
-  Bars,
-  NavMenu,
-  NavBtn,
-  NavBtnLink,
 } from "./NavbarStyles";
 
 const Navbar = () => {
