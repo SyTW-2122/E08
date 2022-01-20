@@ -13,7 +13,16 @@ deploy:
   local_dir: build
 true:
   branch: dev-app
+
+addons:
+  sonarcloud:
+    organization: "Sonarcloud" 
+    token:
+      secure: "$SONAR_TOKEN" 
+script:
+  - sonar-scanner
+
 notifications:
-  slack:
-    rooms:
-	  - sytwull:GgiUiOJJeifKY0uamYUGF1Zr#e08
+slack:
+  rooms:
+  - sytwull:GgiUiOJJeifKY0uamYUGF1Zr#e08
