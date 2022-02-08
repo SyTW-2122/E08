@@ -1,25 +1,11 @@
-# Backend
-####E08
+# E08 - Sistemas y tecnologias web - MERN
 
-Para usar el backend se debe seguir las siguientes instrucciones
+Aplicación web de venta de baterías usadas para su reciclaje.
 
-Instalamos las dependencias del proyecto
-```
-npm install
-```
+Desarrollada en REACT, base de datos en MongoDB y una API para la gestión de peticiones
 
-Para ejecutarlo en modo desarrollo
-```
-npm run dev
-```
+#### Integrantes
 
-Para iniciar el backend
-```
-npm run start
-```
-Con esto el servidor estaría a la espera de peticiones y listo para su uso. 
-
-Para ejecutar los tests del backend
-```
-npm run test
-```
+* Elvis Nogueiras Gonzalez - (alu0101281308@ull.edu.es)
+* José Daniel Fuentes Marra - (alu0101166247@ull.edu.es)
+* Carla Fernanda Flores Gonzales - (alu0101278353@ull.edu.es)
