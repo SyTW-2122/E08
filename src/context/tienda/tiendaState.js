@@ -27,7 +27,7 @@ const TiendaState = props => {
 
     const obtenerBateriasVenta = (async () => {
         try {
-            const resultado = await clienteAxios.get('/api/Tienda');  
+            const resultado = await clienteAxios.get('/api/tienda');  
             dispatch({
                 type: TIENDA_BATERIAS,
                 payload: resultado.data.baterias
