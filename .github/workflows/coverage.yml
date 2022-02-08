@@ -3,7 +3,7 @@ name: Api Coverage
 on: [push]
 
 jobs:
-  coverage:
+  api-coverage:
 
     runs-on: ubuntu-latest
 

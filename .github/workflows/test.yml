@@ -3,7 +3,7 @@ name: Api Test
 on: [push]
 
 jobs:
-  build:
+  api-test:
 
     runs-on: ubuntu-latest
 
