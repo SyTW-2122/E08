@@ -4,8 +4,8 @@
   "description": "Servidor de la app para sytw",
   "main": "index.js",
   "scripts": {
-    "start": "node src/.",
-    "dev": "nodemon src/.",
+    "start": "node .",
+    "dev": "nodemon .",
     "test": "NODE_ENV=test mocha --timeout 10000 tests/*.test.js --exit",
     "coverage": "nyc npm run test && nyc report --reporter=lcov"
   },
