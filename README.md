@@ -1,16 +1,16 @@
-# APP
-### Updates
+# Frontend
 
-TDD:
+###E08
 
-* < Login /> Formulario se muestra'
-* < Login /> Validacion de formulario'
-* < Register /> Formulario se muestra'
-* < Register /> Validacion de formulario'
-
-Code:
-
-* Singin funcionando con la api
-* Singup funcionando con la api
-* Encriptacion de contraseña en la base de datos
-* Token con JWT funcionando en Singin y Singup
+Instalamos las dependencias del proyecto
+```
+npm install
+```
+Una vez instaladas, podremos ejecutar el frontend en modo desarrollo
+```
+npm run start
+```
+Para generar la buid del frontend
+```
+npm run build
+```
