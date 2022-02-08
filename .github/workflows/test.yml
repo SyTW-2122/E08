@@ -3,15 +3,20 @@ name: Api Test
 on: [push]
 
 jobs:
-  test-backend:
-    name: Test Backend
+  build:
+
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-      - run: cd ./backend && npm install
-
-      - name: Run Test
-        run: cd ./backend && npm run test
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: cd ./backend && npm install
+    - run: cd ./backend && npm run test
