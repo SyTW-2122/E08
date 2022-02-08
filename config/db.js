@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-require('dotenv').config({ path: 'src/variables.env' });
+require('dotenv').config({ path: 'variables.env' });
 
 const {NODE_ENV} = process.env
 

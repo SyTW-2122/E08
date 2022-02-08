@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("../src/index");
+const app = require("../index");
 
 describe("Tests para las rutas de los usuarios", () => {
   let token;
