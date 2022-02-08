@@ -3,7 +3,7 @@ name: Frontend Coverage
 on: [push]
 
 jobs:
-  coverage:
+  frontend-coverage:
 
     runs-on: ubuntu-latest
 

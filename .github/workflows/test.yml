@@ -3,6 +3,7 @@ name: Frontend Test
 on: [push]
 
 jobs:
+  frontend-test:
 
     runs-on: ubuntu-latest
 
