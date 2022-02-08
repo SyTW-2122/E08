@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/.",
     "dev": "nodemon src/.",
-    "test": "mocha tests/*.test.js --exit",
+    "test": "NODE_ENV=test mocha --timeout 10000 tests/*.test.js --exit",
     "coverage": "nyc npm test && nyc report --reporter=lcov"
   },
   "author": "E8-SYTW",
