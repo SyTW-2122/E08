@@ -14,3 +14,4 @@ Code:
 * Singup funcionando con la api
 * Encriptacion de contraseña en la base de datos
 * Token con JWT funcionando en Singin y Singup
+ 
