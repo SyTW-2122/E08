@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter} from 'react-router-dom'
 import Login from '../components/auth/Login';
+import AlertaState from '../context/alertas/alertaState';
+import AuthState from '../context/autenticacion/authState';
 
 import '@testing-library/jest-dom/extend-expect';
 import { render, screen } from '@testing-library/react'
@@ -10,9 +12,13 @@ import userEvent from '@testing-library/user-event'
 test('<Login /> Cargando formulario y haciendo testing.', () => {
 
     const wrapper = render(
-        <BrowserRouter>
-             <Login />
-        </BrowserRouter>
+        <AuthState>
+            <AlertaState>
+                <BrowserRouter>
+                    <Login />
+                </BrowserRouter>
+            </AlertaState>
+        </AuthState>
     );
 
     const boton_submit = screen.getByTestId('botonSubmit');
