@@ -1,6 +1,5 @@
 # Frontend
-
-###E08
+E08
 
 Instalamos las dependencias del proyecto
 ```
