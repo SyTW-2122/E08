@@ -1,11 +1,16 @@
-# E08 - Sistemas y tecnologias web - MERN
+# APP
+### Updates
 
-Aplicación web de venta de baterías usadas para su reciclaje.
+TDD:
 
-Desarrollada en REACT, base de datos en MongoDB y una API para la gestión de peticiones
+* < Login /> Formulario se muestra'
+* < Login /> Validacion de formulario'
+* < Register /> Formulario se muestra'
+* < Register /> Validacion de formulario'
 
-#### Integrantes
+Code:
 
-* Elvis Nogueiras Gonzalez - (alu0101281308@ull.edu.es)
-* José Daniel Fuentes Marra - (alu0101166247@ull.edu.es)
-* Carla Fernanda Flores Gonzales - (alu0101278353@ull.edu.es)
+* Singin funcionando con la api
+* Singup funcionando con la api
+* Encriptacion de contraseña en la base de datos
+* Token con JWT funcionando en Singin y Singup
