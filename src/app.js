@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './components/auth/Login';
+import NuevaCuenta from './components/auth/NuevaCuenta';
 import Footer from './components/layouts/Footer';
 import NavBar from './components/layouts/NavBar';
 import AlertaState from './context/alertas/alertaState';
